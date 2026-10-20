@@ -8,11 +8,12 @@ const app = express();
 app.use(express.json());
 app.use("/api/products", productRoute);
 // Connect DB first, then start server
+const PORT=process.env.PORT || 5000
 const startServer = async () => {
   try {
     await connectDb();
-    app.listen(3000, () => {
-      console.log("Server is running on port 3000");
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
     });
   } catch (error) {
     console.error("Failed to connect to MongoDB:", error);
